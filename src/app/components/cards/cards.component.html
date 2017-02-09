@@ -1,0 +1,16 @@
+<div>
+	<h3>Users card view</h3>
+	
+	<div class="flip-card active-card" *ngFor="let user of users; let k = index" >
+		<div class="card label-info">
+	    	<h6>{{ k+1 }}</h6>
+		</div>
+		<div class="well">
+		    <h1> Card {{user._id}} </h1>
+		    <h2> {{user.name}} </h2>
+		    <h3> {{user.password}} </h3>
+		    <h4> {{user.email}} </h4>
+		</div>
+	</div>
+
+</div>

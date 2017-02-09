@@ -1,0 +1,21 @@
+<div>
+	<search [(inputValue)]="searchVal"></search>
+
+	<div class="panel panel-default" >
+		<table class="table">
+			<thead> 
+				<tr>
+					<th (click)="currentSortString='name'">		Name 	<i class="fa fa-sort-desc" ></i>   </th>
+					<th (click)="currentSortString='password'">	Number 	</th>
+					<th (click)="currentSortString='email'">	Email 	</th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr *ngFor="let user of users | search:searchVal | sort:currentSortString ">
+			 		<td>{{user.name}}</td>
+			 		<td>{{user.password}}</td>
+			 		<td>{{user.email}}</td>
+			 	</tr>
+		</table>
+	</div>
+</div>

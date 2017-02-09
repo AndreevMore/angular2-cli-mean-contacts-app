@@ -1,0 +1,17 @@
+h2 {
+    text-decoration: underline;
+}
+
+nav,
+div {
+    text-align: center;
+}
+
+input {
+    text-align: center;
+    width: 60%;
+}
+
+.table th {
+    text-align: center;
+}

@@ -1,0 +1,56 @@
+<div>
+	<div id="form-group">
+		<div class="row">
+			<div class="col-md-4">
+				<label>Name holder:</label>
+				<input class="form-control" type="text" [(ngModel)]="newUser.name" placeholder="name"  name="name" #name="ngModel" required />
+				<div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+				name required
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label>Phone holder:</label>
+				<input class="form-control" type="text" [(ngModel)]="newUser.password" placeholder="number" requiered #phone="ngModel" name="phone" pattern="^[0-9]+$" required	 />
+				<div [hidden]="phone.valid || phone.untouched" class="alert alert-danger">
+				phone required
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label>Email holder:</label>
+				<input class="form-control" type="email" [(ngModel)]="newUser.email" placeholder="email" name="email" #email="ngModel" pattern="[a-zA-Z_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}" required />
+				<div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+				email required
+				</div>
+			</div>
+		</div>
+		<div class = "row ">
+					<button class="btn btn-success" (click)="userAdd()" [disabled]="name.invalid || email.invalid || phone.invalid">Add new user</button>
+					<button class="btn btn-danger" (click)="usersDeleteSelected()">Delete selected</button>
+					<button class="btn btn-info" (click)="usersConsolePrint()">console.log(press F12)</button>
+		</div>
+	</div>
+	<div class="panel panel-default" >
+		<table class="table">
+			<thead> 
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Number</th>
+					<th>Email</th>
+					<th>checkbox</th>
+					<th>delete</th>
+				</tr>
+			</thead>
+			<tbody>
+			 	<tr *ngFor="let user of users; let i = index">
+			 		<th scope="row">{{i+1}}</th>
+			 		<td>{{user.name}}</td>
+			 		<td>{{user.password}}</td>
+			 		<td>{{user.email}}</td>
+			 		<td><input type="checkbox" [(ngModel)]="user.selected"></td>
+			 		<th><button class="delete btn btn-default" (click)="userDelete(user); $event.stopPropagation()">x</button></th>
+			 	</tr>
+		</table>
+	</div>
+</div>
+				

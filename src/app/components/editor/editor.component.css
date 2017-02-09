@@ -1,0 +1,7 @@
+input.ng-touched.ng-invalid 	{border:solid red 2px;}
+input.ng-touched.ng-valid 		{border:solid green 2px;}
+
+.center 						{ text-align: center; }
+
+button							{width: 33%; margin: 10px auto;}
+div 							{padding: 10px}
