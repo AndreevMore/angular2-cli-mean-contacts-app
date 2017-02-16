@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewChild, EventEmitter } from '@angular/core';
 import { Http, Response} from '@angular/http';
 import 'rxjs/Rx' ;
 
@@ -21,30 +21,54 @@ export class BackupComponent {
 	newUser: NewUser = new NewUser("", "", "");
 	isLoading = true;
 
-
-
-
 	constructor(public elementRef: ElementRef, private httpService: HttpService, private state: GlobalState, private winRef: WindowRef) {
 	 // console.log('Window object', winRef.nativeWindow);
 	}
 
+	userAdd(){
+	console.log("----backup.component----"+this.newUser);
 
-fileToBase($event) : void {
-    this.readThis($event.target);
-  }
+		this.httpService.userAdd(this.newUser).subscribe(
+			res => {
+				let newUser = res.json();
+				this.users.push(newUser);
+			},
+			error => console.log(error)
+		);
+	}
 
-readThis(inputValue: any) : void {
-    var file:File = inputValue.files[0]; 
-    var myReader:FileReader = new FileReader();
+	fileToBase($event) : void {
+		var self = this;
+		var file = $event.target.files[0];
 
-    myReader.onloadend = function(e){
-      // you can perform an action with readed data here
-      console.log(myReader.result);
-    }
+        var reader = new FileReader();
+        reader.onload = function (e:any) {
+            var contents = e.target.result;
+            var json = JSON.parse(contents);
+                
+            // console.log(contents);
 
-    myReader.readAsText(file);
-  }
-  
+            for (var i = 0; i < json.length; i++) {
+                let object = json[i];
+                self.newUser = {name : object.name, password : object.password, email : object.email};
+				// let x = bUser.json()
+				// console.log(self.newUser);
+
+                self.userAdd();
+
+				// self.httpService.userAdd(bUser).subscribe(
+				// 	res => {
+				// 		this.users.push(bUser);
+				// 	},
+				// 	error => console.log(error)
+				// );
+
+
+            }
+        }
+        reader.readAsText(file);
+        // alert('data is loaded');
+	}
 
 	baseToFile(){
 		if (this.winRef.nativeWindow.File && this.winRef.nativeWindow.FileReader && this.winRef.nativeWindow.FileList && window.Blob) {

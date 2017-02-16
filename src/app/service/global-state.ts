@@ -33,7 +33,6 @@ export class GlobalState {
       event: event,
       data: this._data[event]
     });
-    
   }
 
   subscribe(event: string, callback: Function) {

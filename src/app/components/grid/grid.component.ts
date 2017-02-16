@@ -35,7 +35,6 @@ export class GridComponent implements OnInit {
 
 	ngOnInit(){
         this.usersGet();
-        
 	}
 	
 	usersGet(){
@@ -45,6 +44,5 @@ export class GridComponent implements OnInit {
 	      () => this.isLoading = false
 	    );
 	}
-
 }
 

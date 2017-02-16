@@ -18,17 +18,26 @@ import { GridComponent }   from '../../components/grid/grid.component';
 
 
 export class NavigationComponent { 
-	usersCount;
+	usersCount: number;
+	users;
+	isLoading = true;
 
-	constructor(private state: GlobalState){}
+	constructor(private httpService: HttpService, private state: GlobalState) {}
 
 	ngOnInit(){
-		this.state.subscribe('users:count', data=>{
+		this.usersCountGet();
+		this.state.subscribe('usersCount', data => {
 			console.log('subscribtion');
 			this.usersCount = data;
 		})
 	}
 	
-
+	usersCountGet(){
+	    this.httpService.usersCountGet().subscribe(
+			data => this.usersCount = data,
+			error => console.log(error),
+			() => this.isLoading = false
+	    );
+	}
 
 }

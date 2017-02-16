@@ -1,3 +1,10 @@
+2 run app
+___________
+1 - run 2.bat
+2 - 3.bat
+3 - http://localhost:4200/
+
+
 # MeanApp
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.

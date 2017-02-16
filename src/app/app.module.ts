@@ -20,6 +20,8 @@ import { SearchPipe }   from './pipes/searchPipe';
 import { SortPipe }   from './pipes/sortPipe';
 
 const appRoutes: Routes = [
+    // { path: '', component: CardsComponent},
+
     { path: '', component: GridComponent},
     { path: 'edit', component: EditorComponent},
     { path: 'backup', component: BackupComponent},

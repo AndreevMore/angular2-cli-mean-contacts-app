@@ -1,12 +1,16 @@
 ul {
+    display: flex;
+    justify-content:space-around;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    border-radius: 5px;
 }
 
 li {
+    width: 100%;
     float: left;
 }
 
@@ -23,5 +27,6 @@ li a:hover:not(.active) {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #111;
+    /*background-color: #4CAF50;*/
 }

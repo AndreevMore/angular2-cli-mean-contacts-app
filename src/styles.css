@@ -10,8 +10,22 @@ div {
 input {
     text-align: center;
     width: 60%;
+    -moz-border-radius:5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari, Chrome */
+    -khtml-border-radius: 5px; /* KHTML */
+    border-radius: 5px; /* CSS3 */
+    height: 40px;
+    margin-bottom: 10px;	
+    outline:none;
 }
 
 .table th {
     text-align: center;
+}
+
+.panel {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    border-color: #ddd;
 }

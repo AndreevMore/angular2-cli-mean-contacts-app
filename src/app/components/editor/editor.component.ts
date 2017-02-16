@@ -30,11 +30,21 @@ export class EditorComponent implements OnInit {
         this.usersGet();
 	}
 
+	usersCountGet(){
+	    this.httpService.usersCountGet().subscribe(
+			data => this.usersCount = data,
+			error => console.log(error),
+			() => this.isLoading = false
+	    );
+	}
+
 	usersConsolePrint(){
 		console.log(this.users);
 	}
 
 	userAdd(){
+		console.log("----editor.component----"+this.newUser);
+
 		this.httpService.userAdd(this.newUser).subscribe(
 			res => {
 				let newUser = res.json();
@@ -70,5 +80,6 @@ export class EditorComponent implements OnInit {
 		for (var i = 0; i < selected.length; ++i) {
 			this.httpService.userDelete(selected[i]).subscribe((data) => { this.usersGet() });
 		}
+		this.usersCountGet();
 	}
 }
