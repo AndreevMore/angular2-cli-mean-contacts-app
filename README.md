@@ -1,4 +1,4 @@
-2 run app
+2 run app You must have installed mongodb
 ___________
 0 - npm install
 
