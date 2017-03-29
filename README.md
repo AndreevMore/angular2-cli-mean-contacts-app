@@ -1,8 +1,11 @@
 2 run app
 ___________
 0 - npm install
+
 1 - run 2.bat
+
 2 - 3.bat
+
 3 - http://localhost:4200/
 
 
